@@ -14,9 +14,9 @@ var env         = require('minimist')(process.argv.slice(2)),
     concat      = require('gulp-concat'),
     gulpif      = require('gulp-if'),
     stylus      = require('gulp-stylus'),
-    jeet        = require('jeet'),
     rupture     = require('rupture'),
-    koutoSwiss  = require('kouto-swiss'),
+    yeticss     = require('yeticss'),
+    axis        = require('axis'),
     prefixer    = require('autoprefixer-stylus'),
     modRewrite  = require('connect-modrewrite'),
     imagemin    = require('gulp-imagemin'),
@@ -60,7 +60,7 @@ gulp.task('stylus', function () {
     gulp.src('src/styl/main.styl')
     .pipe(plumber())
         .pipe(stylus({
-            use:[koutoSwiss(), prefixer(), jeet(), rupture()],
+            use:[prefixer(), yeticss(), axis(), rupture()],
             compress: env.p,
         }))
         .pipe(gulp.dest('build/css'));
